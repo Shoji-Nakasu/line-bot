@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	// HTTP Handlerの初期化
+	// HTTP Handler の初期化
 	handler, err := httphandler.New(
 		os.Getenv("CHANNEL_SECRET"),
 		os.Getenv("CHANNEL_TOKEN"),
@@ -51,6 +51,7 @@ func main() {
 
 	// /callback にエンドポイントの定義
 	http.Handle("/callback", handler)
+	
 	// HTTPサーバの起動
 	log.Printf("Listening on port %s", port)
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
