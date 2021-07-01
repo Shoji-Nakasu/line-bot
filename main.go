@@ -42,7 +42,7 @@ func main() {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
 				replyText := message.Text
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("おっぱい" + replyText)).Do(); err != nil {
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("『" + replyText + "』と言ってくれてありがとう😊")).Do(); err != nil {
 					log.Print(err)
 				}
 			}
@@ -51,7 +51,7 @@ func main() {
 
 	// /callback にエンドポイントの定義
 	http.Handle("/callback", handler)
-	
+
 	// HTTPサーバの起動
 	log.Printf("Listening on port %s", port)
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
